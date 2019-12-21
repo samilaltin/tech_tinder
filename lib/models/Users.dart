@@ -1,9 +1,9 @@
-class TechTinder {
+class Users {
   String title;
   String description;
   String imageUrl;
 
-  TechTinder.fromJsonMap(Map<String, dynamic> map)
+  Users.fromJsonMap(Map<String, dynamic> map)
       : title = map["title"],
         description = map["description"],
         imageUrl = map["image_url"];
