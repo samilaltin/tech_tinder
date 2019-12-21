@@ -71,8 +71,8 @@ class TinderSwapCard extends StatefulWidget {
     _cardSizes = new List();
 
     for (int i = 0; i < stackNum; i++) {
-      _cardSizes.add(new Size(minWidth + (widthGap / stackNum) * i,
-          minHeight + (heightGap / stackNum) * i));
+      _cardSizes.add(new Size(minWidth - 50 + (widthGap / stackNum) * i,
+          minHeight - 50 + (heightGap / stackNum) * i));
 
       switch (orientation) {
         case AmassOrientation.BOTTOM:
