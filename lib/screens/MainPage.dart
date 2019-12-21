@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_tinder/models/FirebaseData.dart';
 import 'package:tech_tinder/utility/Constants.dart';
 import 'package:tech_tinder/widgets/SwipeCards.dart';
 
@@ -27,11 +28,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase();
     DatabaseReference ref = firebaseDatabase.reference();
-
-    ref.child("contents").onValue.listen((e) {
-      DataSnapshot datasnapshot = e.snapshot;
+    ref.once().then((DataSnapshot data) {
       setState(() {
-        log(datasnapshot.value.toString());
+        FirebaseData.fromSnapshot(data.value);
       });
     });
   }

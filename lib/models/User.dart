@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:firebase_database/firebase_database.dart';
 
 class User {
@@ -15,8 +17,8 @@ class User {
 
   String get type => _type;
 
-  User.fromSnapshot(DataSnapshot snapshot) {
-    _answer = snapshot.value['answer'];
-    _type = snapshot.value['type'];
+  User.fromMap(HashMap map) {
+    _answer = map['answer'];
+    _type = map['type'];
   }
 }

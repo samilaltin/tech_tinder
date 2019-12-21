@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:firebase_database/firebase_database.dart';
 
 import 'Status.dart';
@@ -30,11 +32,11 @@ class Content {
 
   String get title => _title;
 
-  Content.fromSnapshot(DataSnapshot snapshot) {
-    _description = snapshot.value['description'];
-    _imageUrl = snapshot.value['image_url'];
-    _sourcePage = snapshot.value['source_page'];
-    _status = snapshot.value['status'];
-    _title = snapshot.value['title'];
+  Content.fromMap(HashMap map) {
+    _description = map['description'];
+    _imageUrl = map['image_url'];
+    _sourcePage = map['source_page'];
+    _status = map['status'];
+    _title = map['title'];
   }
 }
