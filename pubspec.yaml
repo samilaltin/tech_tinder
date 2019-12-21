@@ -48,6 +48,10 @@ flutter:
   assets:
     - Assets/login_background.png
     - Assets/loodos.png
+    - Assets/images/like.png
+    - Assets/images/hate.png
+    - Assets/images/back.png
+    - Assets/images/list.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
