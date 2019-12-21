@@ -43,7 +43,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         minWidth: MediaQuery.of(context).size.width * 0.8,
         minHeight: MediaQuery.of(context).size.width * 0.8,
         cardBuilder: (context, index) => Card(
-              child: Image.network(firebaseData.contents[index].imageUrl),
+              child: firebaseData.contents == null
+                  ? Container()
+                  : Image.network(
+                      firebaseData.contents[index].imageUrl,
+                    ),
             ),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {

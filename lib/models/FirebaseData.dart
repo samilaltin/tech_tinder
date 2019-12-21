@@ -6,23 +6,16 @@ import 'package:tech_tinder/models/User.dart';
 
 class FirebaseData {
   List<Content> contents;
-  List<User> users;
+  User user;
 
   FirebaseData.fromSnapshot(Map<dynamic, dynamic> snapshot) {
     if (contents == null) {
       contents = List();
     }
-    if (users == null) {
-      users = List();
-    }
     List<dynamic> listContent = snapshot["contents"];
     listContent.forEach((val) {
       contents.add(Content.fromMap(HashMap<String, dynamic>.from(val)));
     });
-/*
-    List<dynamic> listUser = snapshot["users"];
-    listUser.forEach((val) {
-      users.add(User.fromMap(HashMap.from(val)));
-    });*/
+    user = User.fromMap(HashMap<String,dynamic>.from(snapshot["users"]["canberk"]["-1"]));
   }
 }

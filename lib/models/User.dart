@@ -4,7 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 class User {
   String _answer;
-  String _type;
+  bool _type;
 
   User(this._answer, this._type);
 
@@ -15,10 +15,10 @@ class User {
 
   String get answer => _answer;
 
-  String get type => _type;
+  bool get type => _type;
 
   User.fromMap(HashMap map) {
-    _answer = map['answer'];
-    _type = map['type'];
+    _type = map['type'].toString().toLowerCase() == "true";
+    _answer = map['answer'].toString();
   }
 }
