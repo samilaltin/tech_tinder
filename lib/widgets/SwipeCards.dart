@@ -105,7 +105,7 @@ class _TinderSwapCardState extends State<TinderSwapCard>
     with SingleTickerProviderStateMixin {
   Alignment frontCardAlign;
   AnimationController _animationController;
-  int _currentFront;
+  int currentFront;
   static int
       _trigger; // 0: no trigger; -1: trigger left; 1: trigger right; -2: trigger bottom; 2: trigger top
 
@@ -113,7 +113,7 @@ class _TinderSwapCardState extends State<TinderSwapCard>
     if (realIndex < 0) {
       return Container();
     }
-    int index = realIndex - _currentFront;
+    int index = realIndex - currentFront;
 
     if (index == widget.stackNum - 1) {
       return Align(
@@ -161,7 +161,7 @@ class _TinderSwapCardState extends State<TinderSwapCard>
 
   List<Widget> _buildCards(BuildContext context) {
     List<Widget> cards = new List();
-    for (int i = _currentFront; i < _currentFront + widget.stackNum; i++) {
+    for (int i = currentFront; i < currentFront + widget.stackNum; i++) {
       cards.add(_buildCard(context, i));
     }
 
@@ -199,7 +199,7 @@ class _TinderSwapCardState extends State<TinderSwapCard>
 
   animateCards(int trigger) {
     if (_animationController.isAnimating ||
-        _currentFront + widget.stackNum == 0) {
+        currentFront + widget.stackNum == 0) {
       return;
     }
     _trigger = trigger;
@@ -215,14 +215,14 @@ class _TinderSwapCardState extends State<TinderSwapCard>
   @override
   void initState() {
     super.initState();
-    _currentFront = widget._totalNum - widget.stackNum;
+    currentFront = widget._totalNum - widget.stackNum;
 
     frontCardAlign = _cardAligns[_cardAligns.length - 1];
     _animationController = new AnimationController(
         vsync: this, duration: Duration(milliseconds: widget._animDuration));
     _animationController.addListener(() => setState(() {}));
     _animationController.addStatusListener((AnimationStatus status) {
-      int index = widget._totalNum - widget.stackNum - _currentFront;
+      int index = widget._totalNum - widget.stackNum - currentFront;
       if (status == AnimationStatus.completed) {
         if (frontCardAlign.x < widget._swipeEdge &&
             frontCardAlign.x > -widget._swipeEdge) {
@@ -289,7 +289,7 @@ class _TinderSwapCardState extends State<TinderSwapCard>
 
   changeCardOrder() {
     setState(() {
-      _currentFront--;
+      currentFront--;
       frontCardAlign = _cardAligns[widget.stackNum - 1];
     });
   }

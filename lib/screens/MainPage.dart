@@ -89,7 +89,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   clickk() {
-    cards.state.changeCardOrder();
+    if(cards.state.widget.stackNum > 1){
+      cards.state.changeCardOrder();
+    }
   }
 
   MaterialButton _buildCircularBtn(
