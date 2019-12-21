@@ -36,9 +36,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     CardController controller; //Use this to trigger swap.
     DatabaseReference ref;
 
-
     cards = new TinderSwapCard(
-        orientation: AmassOrientation.RIGHT_BOTTOM,
+        orientation: AmassOrientation.TOP,
         totalNum: 6,
         stackNum: 3,
         swipeEdge: 4.0,

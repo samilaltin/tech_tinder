@@ -71,13 +71,13 @@ class TinderSwapCard extends StatefulWidget {
     _cardSizes = new List();
 
     for (int i = 0; i < stackNum; i++) {
-      _cardSizes.add(new Size(minWidth - 50 + (widthGap / stackNum) * i,
-          minHeight - 50 + (heightGap / stackNum) * i));
+      _cardSizes.add(new Size(minWidth + (widthGap / stackNum) * i,
+          minHeight + (heightGap / stackNum) * i));
 
       switch (orientation) {
         case AmassOrientation.BOTTOM:
-          _cardAligns.add(
-              new Alignment(0.0, (0.5 / (stackNum - 1)) * (stackNum - i)));
+          _cardAligns
+              .add(new Alignment(0.0, (0.5 / (stackNum - 1)) * (stackNum - i)));
           break;
         case AmassOrientation.TOP:
           _cardAligns.add(
@@ -88,13 +88,8 @@ class TinderSwapCard extends StatefulWidget {
               new Alignment((-0.5 / (stackNum - 1)) * (stackNum - i), 0.0));
           break;
         case AmassOrientation.RIGHT:
-          _cardAligns.add(
-              new Alignment((0.5 / (stackNum - 1)) * (stackNum - i), 0.0));
-          break;
-        case AmassOrientation.RIGHT_BOTTOM:
-          _cardAligns.add(new Alignment(
-              (0.8 / (stackNum - 1)) * (stackNum - i),
-              (0.2 / (stackNum - 1)) * (stackNum - i)));
+          _cardAligns
+              .add(new Alignment((0.5 / (stackNum - 1)) * (stackNum - i), 0.0));
           break;
       }
     }
@@ -308,7 +303,7 @@ typedef CardSwipeCompleteCallback = void Function(
 typedef CardDragUpdateCallback = void Function(
     DragUpdateDetails details, Alignment align);
 
-enum AmassOrientation { TOP, BOTTOM, LEFT, RIGHT, RIGHT_BOTTOM }
+enum AmassOrientation { TOP, BOTTOM, LEFT, RIGHT }
 
 class CardAnimation {
   static Animation<Alignment> frontCardAlign(AnimationController controller,
