@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_tinder/utility/FirebaseDatabaseUtil.dart';
 import 'package:tech_tinder/widgets/SwipeCards.dart';
 
 class MainPage extends StatefulWidget {
@@ -8,6 +9,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
+  FirebaseDatabaseUtil databaseUtil;
+
   List<String> welcomeImages = [
     "assets/welcome0.png",
     "assets/welcome1.png",
@@ -18,10 +21,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    databaseUtil = new FirebaseDatabaseUtil();
+    databaseUtil.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     CardController controller; //Use this to trigger swap.
-    final notesReference = FirebaseDatabase.instance.reference().child('contents');
-
     return new Scaffold(
       body: new Center(
           child: Container(
