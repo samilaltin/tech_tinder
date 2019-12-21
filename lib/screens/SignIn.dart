@@ -43,18 +43,6 @@ class SignIn extends StatelessWidget {
                                   TextStyle(fontSize: 15, color: Colors.white)),
                         ),
                       ),
-//                      TextFormField(
-//                        obscureText: true,
-//                        style: TextStyle(
-//                          color: Colors.white,
-//                        ),
-//                        decoration: InputDecoration(
-//                            enabledBorder: UnderlineInputBorder(
-//                                borderSide: BorderSide(color: Colors.white)),
-//                            labelText: 'Password',
-//                            labelStyle:
-//                                TextStyle(fontSize: 15, color: Colors.white)),
-//                      )
                     ],
                   ),
                 ),
@@ -70,63 +58,37 @@ class SignIn extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    color: Color(0xffff2d55),
+                    color: Colors.cyan[600],
                     elevation: 0,
                     minWidth: 350,
-                    height: 60,
+                    height: 55,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: MaterialButton(
-                    onPressed: () {},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Icon(FontAwesomeIcons.facebookSquare),
-                        Text(
-                          'Sign up with facebook',
-                          style: TextStyle(
-                              fontSize: 15, fontFamily: 'SFUIDisplay'),
-                        )
-                      ],
-                    ),
-                    color: Colors.transparent,
-                    elevation: 0,
-                    minWidth: 350,
-                    height: 60,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white)),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 30),
                   child: Center(
                     child: RichText(
                       text: TextSpan(children: [
                         TextSpan(
-                            text: "Don't have an account?",
+                            text: "FROM",
                             style: TextStyle(
                               fontFamily: 'SFUIDisplay',
                               color: Colors.white,
                               fontSize: 15,
                             )),
-                        TextSpan(
-                            text: "sign up",
-                            style: TextStyle(
-                              fontFamily: 'SFUIDisplay',
-                              color: Color(0xffff2d55),
-                              fontSize: 15,
-                            ))
                       ]),
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 0),
+                  child: Image(
+                    height: 75,
+                    image: AssetImage('Assets/loodos.png'),
+                  ),
+                ),
               ],
             ),
           ),
