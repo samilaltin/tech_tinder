@@ -1,10 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class Status {
-  String _dontKnow;
-  String _future;
-  String _past;
-  String _present;
+  bool _dontKnow;
+  int _future;
+  int _past;
+  int _present;
 
   Status(this._dontKnow, this._future, this._past, this._present);
 
@@ -15,13 +15,13 @@ class Status {
     this._present = obj['present'];
   }
 
-  String get dontKnow => _dontKnow;
+  bool get dontKnow => _dontKnow;
 
-  String get future => _future;
+  int get future => _future;
 
-  String get past => _past;
+  int get past => _past;
 
-  String get present => _present;
+  int get present => _present;
 
   Status.fromSnapshot(DataSnapshot snapshot) {
     _dontKnow = snapshot.value['dont_know'];
