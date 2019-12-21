@@ -7,7 +7,7 @@ class SignIn extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage('Assets/login_background.png'),
+        image: Image.asset('Assets/login_background.png').image,
         fit: BoxFit.cover,
       )),
       child: Scaffold(
