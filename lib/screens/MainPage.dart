@@ -1,8 +1,8 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_tinder/utility/FirebaseDatabaseUtil.dart';
 import 'package:tech_tinder/utility/Constants.dart';
 import 'package:tech_tinder/widgets/SwipeCards.dart';
 
@@ -12,9 +12,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  FirebaseDatabaseUtil databaseUtil;
   TinderSwapCard cards;
-
   List<String> welcomeImages = [
     "assets/welcome0.png",
     "assets/welcome1.png",
@@ -27,8 +25,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    databaseUtil = new FirebaseDatabaseUtil();
-    databaseUtil.initState();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase();
+    DatabaseReference ref = firebaseDatabase.reference();
+
+    ref.child("contents").onValue.listen((e) {
+      DataSnapshot datasnapshot = e.snapshot;
+      setState(() {
+        log(datasnapshot.value.toString());
+      });
+    });
   }
 
   @override

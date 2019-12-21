@@ -30,8 +30,13 @@ class FirebaseDatabaseUtil {
     // Demonstrates configuring the database directly
 
     _users = database.reference().child('users');
-    database.reference().child('contents').once().then((DataSnapshot snapshot) {
-      print('Connected to second database and read ${snapshot.value}');
+//    database.reference().child('contents').once().then((DataSnapshot snapshot) {
+//      print('Connected to second database and read ${snapshot.value}');
+//    });
+    database.reference().onValue.listen((e) {
+      DataSnapshot datasnapshot = e.snapshot;
+      // Do something with datasnapshot
+      print('Connected to second database and read ${datasnapshot.value}');
     });
     database.setPersistenceEnabled(true);
     database.setPersistenceCacheSizeBytes(10000000);
