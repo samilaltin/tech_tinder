@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tech_tinder/screens/MainPage.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -49,7 +48,9 @@ class SignIn extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateToMainPage(context);
+                    },
                     child: Text(
                       'SIGN IN',
                       style: TextStyle(
@@ -95,5 +96,10 @@ class SignIn extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void navigateToMainPage(BuildContext context) {
+    Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new MainPage()));
   }
 }

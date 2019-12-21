@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_tinder/widgets/SwipeCards.dart';
 
@@ -6,8 +7,7 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage>
-    with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   List<String> welcomeImages = [
     "assets/welcome0.png",
     "assets/welcome1.png",
@@ -20,6 +20,7 @@ class _MainPageState extends State<MainPage>
   @override
   Widget build(BuildContext context) {
     CardController controller; //Use this to trigger swap.
+    final notesReference = FirebaseDatabase.instance.reference().child('contents');
 
     return new Scaffold(
       body: new Center(
@@ -35,8 +36,8 @@ class _MainPageState extends State<MainPage>
                   minWidth: MediaQuery.of(context).size.width * 0.8,
                   minHeight: MediaQuery.of(context).size.width * 0.8,
                   cardBuilder: (context, index) => Card(
-                    child: Image.asset('${welcomeImages[index]}'),
-                  ),
+                        child: Image.asset('${welcomeImages[index]}'),
+                      ),
                   cardController: controller = CardController(),
                   swipeUpdateCallback:
                       (DragUpdateDetails details, Alignment align) {
@@ -49,7 +50,7 @@ class _MainPageState extends State<MainPage>
                   },
                   swipeCompleteCallback:
                       (CardSwipeOrientation orientation, int index) {
-                        orientation.index;
+                    orientation.index;
                   }))),
     );
   }
