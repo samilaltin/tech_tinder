@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 child: Container(
                     child: Column(
               children: <Widget>[
-                Expanded(
+                Flexible(
                   child: firebaseData.contents == null
                       ? Container()
                       : Image.network(
