@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:tech_tinder/screens/LoginPage.dart';
 import 'package:flutter/services.dart';
-import 'package:tech_tinder/screens/MainPage.dart';
+import 'package:tech_tinder/screens/SplashPage.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-    ]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
 
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       title: 'Tech Tinder',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home: SplashPage(),
       debugShowCheckedModeBanner: false,
-    );
-  }
+    ),
+  );
 }

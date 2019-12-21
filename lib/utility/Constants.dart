@@ -1,6 +1,6 @@
 class Constants {
   // Shared Preferences keys
-  static final String SP_TOKEN_KEY = "SP_TOKEN";
+  static final String SP_USER_KEY = "SP_USER";
 }
 
 class ButtonImages {
