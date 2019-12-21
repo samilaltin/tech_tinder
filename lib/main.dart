@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_tinder/LoginPage.dart';
+import 'package:tech_tinder/screens/LoginPage.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
