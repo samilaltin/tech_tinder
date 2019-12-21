@@ -14,14 +14,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   TinderSwapCard cards;
-  List<String> welcomeImages = [
-    "assets/welcome0.png",
-    "assets/welcome1.png",
-    "assets/welcome2.png",
-    "assets/welcome2.png",
-    "assets/welcome1.png",
-    "assets/welcome1.png"
-  ];
+  FirebaseData firebaseData;
 
   @override
   void initState() {
@@ -30,8 +23,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     DatabaseReference ref = firebaseDatabase.reference();
     ref.once().then((DataSnapshot data) {
       setState(() {
-        FirebaseData d =FirebaseData.fromSnapshot(data.value);
-        d.toString();
+        firebaseData = FirebaseData.fromSnapshot(data.value);
       });
     });
   }
@@ -51,7 +43,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         minWidth: MediaQuery.of(context).size.width * 0.8,
         minHeight: MediaQuery.of(context).size.width * 0.8,
         cardBuilder: (context, index) => Card(
-              child: Image.asset('${welcomeImages[index]}'),
+              child: Image.network(firebaseData.contents[index].imageUrl),
             ),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
@@ -88,7 +80,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Flexible(
-
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: cards,
