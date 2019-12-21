@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class FirebaseDatabaseUtil {
@@ -22,6 +23,9 @@ class FirebaseDatabaseUtil {
 
   void initState() {
     // Demonstrates configuring to the database using a file
+    DatabaseReference ref;
+    ref = FirebaseDatabase.instance.reference();
+    ref.child("contens");
     _contents = FirebaseDatabase.instance.reference().child('contents');
     // Demonstrates configuring the database directly
 
