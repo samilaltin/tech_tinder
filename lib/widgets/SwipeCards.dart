@@ -40,7 +40,7 @@ class TinderSwapCard extends StatefulWidget {
       @required int totalNum,
       AmassOrientation orientation = AmassOrientation.BOTTOM,
       int stackNum = 3,
-      int animDuration = 800,
+      int animDuration = 200,
       double swipeEdge = 3.0,
       double maxWidth,
       double maxHeight,

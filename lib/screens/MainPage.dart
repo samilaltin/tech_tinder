@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
     cards = new TinderSwapCard(
         orientation: AmassOrientation.TOP,
-        totalNum: 6,
+        totalNum: firebaseData.contents.length,
         stackNum: 3,
         swipeEdge: 4.0,
         maxWidth: MediaQuery.of(context).size.width * 0.9,
@@ -43,12 +43,44 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         minWidth: MediaQuery.of(context).size.width * 0.8,
         minHeight: MediaQuery.of(context).size.width * 0.8,
         cardBuilder: (context, index) => Card(
-              child: firebaseData.contents == null
-                  ? Container()
-                  : Image.network(
-                      firebaseData.contents[index].imageUrl,
+                child: Container(
+                    child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: firebaseData.contents == null
+                      ? Container()
+                      : Image.network(
+                          firebaseData.contents[index].imageUrl,
+                        ),
+                ),
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Center(
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: firebaseData.contents[index].title,
+                              style: TextStyle(
+                                fontFamily: 'SFUIDisplay',
+                                color: Colors.black,
+                                fontSize: 16,
+                              )),
+                        ]),
+                      ),
                     ),
-            ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                  child: Text(
+                    firebaseData.contents[index].description,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
+                ),
+              ],
+            ))),
         cardController: controller = CardController(),
         swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
           /// Get swiping card's alignment

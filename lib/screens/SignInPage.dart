@@ -1,4 +1,8 @@
+import 'dart:developer';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_tinder/models/User.dart';
 import 'package:tech_tinder/screens/MainPage.dart';
 import 'package:tech_tinder/utility/Constants.dart';
 import 'package:tech_tinder/utility/SharedPreferencesHelper.dart';
@@ -13,19 +17,35 @@ class SignInPage extends StatefulWidget {
 
 class SignInState extends State<SignInPage> {
   final _key = new GlobalKey<FormState>();
-
+  User _usermodel;
   String _user;
+  FirebaseDatabase firebaseDatabase;
+
+  DatabaseReference ref;
+
+  @override
+  void initState() {
+    super.initState();
+
+    firebaseDatabase = FirebaseDatabase();
+    ref = firebaseDatabase.reference();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: Image.asset('Assets/login_background.png').image,
-          fit: BoxFit.cover,
-        )),
+              image: Image
+                  .asset('Assets/login_background.png')
+                  .image,
+              fit: BoxFit.cover,
+            )),
         child: Padding(
           padding: EdgeInsets.all(23),
           child: ListView(
@@ -50,7 +70,7 @@ class SignInState extends State<SignInPage> {
                                 borderSide: BorderSide(color: Colors.white)),
                             labelText: 'Username',
                             labelStyle:
-                                TextStyle(fontSize: 15, color: Colors.white)),
+                            TextStyle(fontSize: 15, color: Colors.white)),
                       ),
                     ),
                   ],
@@ -111,6 +131,8 @@ class SignInState extends State<SignInPage> {
 
     if (form.validate()) {
       form.save();
+      ref.child("users").child("$_user").child("-1").child("answer").set("freee");
+      ref.child("users").child("$_user").child("-1").child("type").set(false);
       if (_user.isNotEmpty) {
         SharedPreferencesHelper.putString(_user, Constants.SP_USER_KEY);
         navigateToMainPage(context);
@@ -124,7 +146,7 @@ class SignInState extends State<SignInPage> {
           context,
           MaterialPageRoute(
               builder: (context) => MainPage(), fullscreenDialog: false),
-          (Route<dynamic> route) => false);
+              (Route<dynamic> route) => false);
     });
   }
 }
