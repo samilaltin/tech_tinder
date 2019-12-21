@@ -82,34 +82,35 @@ List<Content> _list=List();
 
     final footerBtns = Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _buildCircularBtn(40.0, ButtonImages.back, 1, clickk),
-          _buildCircularBtn(70.0, ButtonImages.hate, 2, clickk),
-          _buildCircularBtn(70.0, ButtonImages.like, 3, clickk),
-          _buildCircularBtn(40.0, ButtonImages.list, 4, clickk),
+          Flexible(
+              child: _buildCircularBtn(40.0, ButtonImages.back, 1, clickk)),
+          Flexible(
+              child: _buildCircularBtn(70.0, ButtonImages.hate, 2, clickk)),
+          Flexible(
+              child: _buildCircularBtn(70.0, ButtonImages.like, 3, clickk)),
+          Flexible(
+              child: _buildCircularBtn(40.0, ButtonImages.list, 4, clickk)),
         ],
       ),
     );
     return new Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 32),
+        padding: EdgeInsets.all(32),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Expanded(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: cards,
-                ),
+            Flexible(
+
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: cards,
               ),
             ),
-            Container(
-              height: 150,
+            Flexible(
               child: footerBtns,
-            )
+            ),
           ],
         ),
       ),
