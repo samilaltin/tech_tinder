@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_tinder/utility/Constants.dart';
 import 'package:tech_tinder/widgets/SwipeCards.dart';
 
 class MainPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-
+  TinderSwapCard cards;
   List<String> welcomeImages = [
     "assets/welcome0.png",
     "assets/welcome1.png",
@@ -39,7 +40,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     CardController controller; //Use this to trigger swap.
     DatabaseReference ref;
-
 
     cards = new TinderSwapCard(
         orientation: AmassOrientation.RIGHT_BOTTOM,
