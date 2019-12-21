@@ -8,7 +8,7 @@ class Content {
   String _description;
   String _imageUrl;
   String _sourcePage;
-  Status _status;
+  String _status;
   String _title;
 
   Content(this._description, this._imageUrl, this._status, this._sourcePage,
@@ -28,15 +28,15 @@ class Content {
 
   String get sourcePage => _sourcePage;
 
-  Status get status => _status;
+  String get status => _status;
 
   String get title => _title;
 
   Content.fromMap(HashMap map) {
-    _description = map['description'];
-    _imageUrl = map['image_url'];
-    _sourcePage = map['source_page'];
-    _status = map['status'];
-    _title = map['title'];
+    _description = map['description'].toString();
+    _imageUrl = map['image_url'].toString();
+    _sourcePage = map['source_page'].toString();
+    _status = map['status'].toString();
+    _title = map['title'].toString();
   }
 }

@@ -9,14 +9,20 @@ class FirebaseData {
   List<User> users;
 
   FirebaseData.fromSnapshot(Map<dynamic, dynamic> snapshot) {
+    if (contents == null) {
+      contents = List();
+    }
+    if (users == null) {
+      users = List();
+    }
     List<dynamic> listContent = snapshot["contents"];
     listContent.forEach((val) {
-      contents.add(Content.fromMap(HashMap.from(val)));
+      contents.add(Content.fromMap(HashMap<String, dynamic>.from(val)));
     });
-
+/*
     List<dynamic> listUser = snapshot["users"];
     listUser.forEach((val) {
       users.add(User.fromMap(HashMap.from(val)));
-    });
+    });*/
   }
 }

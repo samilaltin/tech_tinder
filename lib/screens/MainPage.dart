@@ -30,7 +30,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     DatabaseReference ref = firebaseDatabase.reference();
     ref.once().then((DataSnapshot data) {
       setState(() {
-        FirebaseData.fromSnapshot(data.value);
+        FirebaseData d =FirebaseData.fromSnapshot(data.value);
+        d.toString();
       });
     });
   }
